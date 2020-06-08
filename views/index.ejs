@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>secret</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/cards.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bulma@0.8.2/css/bulma.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/7dc3015a44.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+
+  <body>
+    <!-- START NAV -->
+    <%- include('partials/navbar') %>
+    <!-- END NAV -->
+
+    <div class="container">
+      <div class="section">
+        <div class="columns">
+          <div class="column has-text-centered">
+            <h1 class="title" style="color: ghostwhite;">
+              Secret Messages
+            </h1>
+            <br />
+          </div>
+        </div>
+        <div id="app" class="row columns is-multiline">
+          <% if (results) { %> <% results.forEach(result => { %>
+          <div v-for="card in cardData" key="card.id" class="column is-4" id="arrCol">
+            <div class="card large">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4 no-padding" style="color: darkblue;">
+                      <%= result.subject %>
+                    </p>
+                    <% if (member&&authenticated) { %>
+                    <p class="is-italic is-primary">
+                      by <%= result.user.firstname+' '+result.user.lastname %>
+                    </p>
+                    <a class="is-info">: <%= result.post_date %></a>
+                    <% } else {%>
+                    <p class="is-italic is-info">
+                      <strong>by&nbsp;</strong>&nbsp; *******
+                    </p>
+                    <a class="is-info">: **:**:****</a>
+                    <% } %>
+                  </div>
+                </div>
+
+                <div class="content">
+                  <%= result.message %>
+                </div>
+                <% var url=result.url %>
+                <% console.log(url) %>
+                <% if (admin&&member&&authenticated) { %>
+                    <a
+                      class="button is-block is-absolute is-danger"
+                      href=<%=url%>
+                      >Delete</a>
+                <% } %>   
+              </div>
+            </div>
+          </div>
+          <% }) %> <% } %>
+        </div>
+      </div>
+    </div>
+    
+
+    <script src="javascripts/burger.js"></script>
+  </body>
+</html>

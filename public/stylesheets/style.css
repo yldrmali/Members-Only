@@ -1,0 +1,25 @@
+
+#arrCol{
+  display: flex !important;
+}
+
+.card.large{
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.is-absolute{
+  position: absolute !important;
+  bottom: 0.3em;
+  right: 5%;
+  width: 90%;
+}
+
+#postdate{
+  position: absolute;
+  right: 2%;
+  top: 5%;
+}
+
+
+

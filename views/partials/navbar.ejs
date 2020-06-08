@@ -1,0 +1,42 @@
+<nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <i class="fab fa-blogger-b fa-2x"></i>
+        </a>
+        <span class="navbar-burger burger" data-target="navbarMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="/main">
+            Home
+          </a>
+          <% if (authenticated) { %>
+          <a class="navbar-item" href="/logout">
+            Log Out
+          </a>
+          <a class="navbar-item" href="/main/newMessage">
+            New message
+          </a>
+          <a class="navbar-item" href="/main/member">
+            Membership
+          </a>
+          <a class="navbar-item" href="/main/admin">
+            Admin
+          </a>
+          <% } else { %>
+          <a class="navbar-item" href="/signup">
+            Sign-up
+          </a>
+          <a class="navbar-item" href="/login">
+            Log in
+          </a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>

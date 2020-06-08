@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cards List - Bulma Templates</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/cards.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bulma@0.8.2/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css" />
+    <script
+      src="https://kit.fontawesome.com/7dc3015a44.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- START NAV -->
+    <%- include('./partials/navbar') %>
+    <!-- END NAV -->
+    <section class="hero is-success is-fullheight">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="column is-4 is-offset-4">
+            <h3 class="title has-text-black">Message</h3>
+            <hr class="login-hr" style="color: 041221;" />
+            <p class="subtitle has-text-black">What is your message?</p>
+            <div class="box">
+              <form action="/main/newMessage" method="POST">
+                <% if ((typeof errors)!=='undefined') { %> <%
+                errors.forEach(error => { %>
+                <div class="message is-danger">
+                  <div class="message-body">
+                    <p><%=error.msg %></p>
+                  </div>
+                </div>
+                <% }) %> <% } %>
+                <div class="field">
+                  <label class="label">Subject</label>
+                  <div class="control">
+                    <input
+                      class="input is-large"
+                      name="subject"
+                      type="text"
+                      placeholder="Your subject"
+                      autofocus
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Message</label>
+                  <div class="control">
+                    <textarea
+                      class="textarea is-large"
+                      name="msg"
+                      type="text"
+                    ></textarea>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="button is-block is-info is-large is-fullwidth"
+                  style="background-color: #071e36;"
+                >
+                  Save
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/javascripts/burger.js"></script>
+  </body>
+</html>
