@@ -40,7 +40,7 @@ exports.main_member_post = function (req, res, next) {
 
 //admin functions
 exports.main_admin_get = function (req, res, next) {
-  res.render('admin',{authenticated:false})
+  res.render('admin',{authenticated:true})
 };
 exports.main_admin_post = function (req, res, next) {
   const {password}=req.body;
